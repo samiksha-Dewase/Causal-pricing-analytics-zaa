@@ -37,19 +37,17 @@ To isolate the authentic causal impact of dynamic pricing changes, this project 
 ---
 ### 2.1 Relationship Between the Two Estimands
 
-The project intentionally uses two complementary causal estimands rather than treating them as the same analysis.
+The project uses two complementary causal estimands that answer related but distinct questions:
 
-**Synthetic Control (SCM)** estimates the causal impact of the specific algorithmic pricing intervention applied to `Store_1` for `PROD_101` beginning in Week 36. Its target estimand is the post-intervention Average Treatment Effect on the Treated (ATT), measured as the difference between the observed outcome and the synthetic counterfactual.
+- **SCM estimates the intervention-level causal impact (ATT)** of the specific algorithmic pricing intervention applied to `Store_1`, `PROD_101`, beginning in Week 36. It compares the observed post-treatment outcome with the synthetic counterfactual constructed from the donor stores.
+- **DoWhy estimates continuous own-price elasticity** by modeling the relationship between `log_price` and `log_units` while adjusting for the identified confounders through the Backdoor Criterion.
+- **DML provides a complementary machine-learning-based elasticity and heterogeneous-effect analysis** for the broader pricing relationship.
 
-**DoWhy / price-elasticity analysis** estimates the causal relationship between continuous price (`log_price`) and demand (`log_units`) after adjustment for the identified confounders. This analysis is intended to quantify own-price elasticity rather than replace the SCM intervention-effect estimate.
+Therefore, these estimands should not be treated as interchangeable:
 
-Therefore:
-
-- **SCM → intervention-level causal impact / ATT**
-- **DoWhy → continuous own-price elasticity**
-- **DML → complementary machine-learning-based elasticity / heterogeneous effect analysis**
-
-These estimands answer related but distinct causal questions and should not be interpreted as interchangeable.
+**SCM → intervention-level causal impact / ATT**  
+**DoWhy → continuous own-price elasticity**  
+**DML → complementary ML-based elasticity / heterogeneous effects**
 
 ## 3. Formal Treatment & Control Group Specification
 
