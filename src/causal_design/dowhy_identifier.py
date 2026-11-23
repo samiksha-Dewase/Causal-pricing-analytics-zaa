@@ -25,14 +25,27 @@ except ImportError:
 def run_causal_identification_pipeline(
     panel_csv_path: str = "data/processed/store_product_week_panel.csv",
     product_filter: str = "PROD_101",
-    treatment_var: str = "log_price",
-    outcome_var: str = "log_units",
+    # DoWhy estimand: continuous own-price elasticity.
+# SCM separately estimates the Week-36 intervention ATT.
+treatment_var: str = "log_price",
+outcome_var: str = "log_units",
     figures_dir: str = "reports/causal_figures"
 ) -> dict:
     """
-    Loads the panel dataset, compiles the DoWhy CausalModel, identifies the
-    causal estimand via the Backdoor Criterion, computes baseline linear estimate,
-    and runs three rigorous causal refutation tests.
+    """
+Runs the continuous price-elasticity causal analysis for PROD_101.
+
+This DoWhy component uses log_price as the continuous treatment and
+log_units as the outcome. It identifies the backdoor adjustment set
+using the project DAG, estimates the adjusted price elasticity, and
+runs causal refutation tests.
+
+This analysis is complementary to the Synthetic Control analysis:
+Synthetic Control estimates the causal impact of the specific Week-36
+algorithmic pricing intervention on Store_1, while this DoWhy component
+estimates the continuous own-price elasticity after adjustment for
+observed confounders.
+"""
     """
     if not os.path.exists(panel_csv_path):
         raise FileNotFoundError(f"Panel dataset not found at: {panel_csv_path}")
