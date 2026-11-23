@@ -35,6 +35,21 @@ To isolate the authentic causal impact of dynamic pricing changes, this project 
    **Target Ground Truth Benchmark:** $\eta^* = -1.50$ (as specified in Member 1 handover).
 
 ---
+### 2.1 Relationship Between the Two Estimands
+
+The project intentionally uses two complementary causal estimands rather than treating them as the same analysis.
+
+**Synthetic Control (SCM)** estimates the causal impact of the specific algorithmic pricing intervention applied to `Store_1` for `PROD_101` beginning in Week 36. Its target estimand is the post-intervention Average Treatment Effect on the Treated (ATT), measured as the difference between the observed outcome and the synthetic counterfactual.
+
+**DoWhy / price-elasticity analysis** estimates the causal relationship between continuous price (`log_price`) and demand (`log_units`) after adjustment for the identified confounders. This analysis is intended to quantify own-price elasticity rather than replace the SCM intervention-effect estimate.
+
+Therefore:
+
+- **SCM → intervention-level causal impact / ATT**
+- **DoWhy → continuous own-price elasticity**
+- **DML → complementary machine-learning-based elasticity / heterogeneous effect analysis**
+
+These estimands answer related but distinct causal questions and should not be interpreted as interchangeable.
 
 ## 3. Formal Treatment & Control Group Specification
 
