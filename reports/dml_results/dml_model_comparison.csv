@@ -1,0 +1,6 @@
+model,theta_elasticity,std_error,ci_95_low,ci_95_high,p_value,ground_truth,abs_error_vs_truth
+Naive OLS (Unadjusted),-0.0124,0.0185,-0.0487,0.0239,0.502697,-1.5,1.4876
+Member 2 DoWhy (Backdoor),-1.4091,0.085,-1.5757,-1.2425,0.0,-1.5,0.0909
+Double ML (Random Forest),-1.2595,0.0978,-1.4512,-1.0678,0.0,-1.5,0.2405
+Double ML (Gradient Boosting),-1.1421,0.0936,-1.3256,-0.9585,0.0,-1.5,0.3579
+Double ML (Ridge Linear),-1.3268,0.0902,-1.5035,-1.15,0.0,-1.5,0.1732

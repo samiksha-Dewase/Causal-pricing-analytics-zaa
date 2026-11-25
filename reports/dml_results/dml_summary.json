@@ -1,0 +1,18 @@
+{
+  "primary_model": "Double ML (Random Forest, 5-Fold Cross-Fitting)",
+  "ground_truth_elasticity": -1.5,
+  "member2_dowhy_elasticity": -1.4091,
+  "dml_theta_elasticity": -1.2595,
+  "dml_std_error": 0.0978,
+  "dml_ci_95": [
+    -1.4512,
+    -1.0678
+  ],
+  "naive_ols_elasticity": -0.0124,
+  "first_stage_r2_outcome": 0.9142,
+  "first_stage_r2_treatment": 0.9963,
+  "post_intervention_avg_price_change_pct": 14.99,
+  "post_intervention_causal_units_lift_pct": -16.13,
+  "post_intervention_total_units_delta": -1564.6,
+  "post_intervention_total_revenue_delta": -1208.46
+}
